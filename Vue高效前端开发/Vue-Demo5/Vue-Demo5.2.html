@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>基本布局</title>
+		<link rel="stylesheet" type="text/css" href="css/antd.css" />
+		<style type="text/css">
+			#layout-basic {
+				text-align: center;
+			}
+			#layout-basic .ant-layout-header,
+			#layout-basic .ant-layout-footer{
+				background: #7bdcea;
+				color: #fff;
+			}
+			#layout-basic .ant-layout-footer{
+				line-height: 1.5;
+			}
+			#layout-basic .ant-layout-sider{
+				background: #3ba0e9;
+				color: #fff;
+				line-height: 120px;
+			}
+			#layout-basic .ant-layout-content{
+				background: rgba(12, 101, 233, 1);
+				color: #fff;
+				line-height: 120px;
+				min-height: 120px;
+			}
+			#layout-basic>.ant-layout{
+				margin-bottom: 48px;
+			}
+			#layout-basic>.ant-layout:last-child{
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="layout-basic">
+				<h1>上中下三栏布局</h1>
+				<a-layout>
+					<a-layout-header>Header</a-layout-header>
+					<a-layout-content>Content</a-layout-content>
+					<a-layout-footer>Footer</a-layout-footer>
+				</a-layout>
+
+				<h1>上中下带左边栏布局</h1>
+				<a-layout>
+					<a-layout-header>Header</a-layout-header>
+					<a-layout>
+						<a-layout-sider>Sider</a-layout-sider>
+						<a-layout-content>Content</a-layout-content>
+					</a-layout>
+					<a-layout-footer>Footer</a-layout-footer>
+				</a-layout>
+
+				<h1>上中下带右边栏布局</h1>
+				<a-layout>
+					<a-layout-header>Header</a-layout-header>
+					<a-layout>
+						<a-layout-content>Content</a-layout-content>
+						<a-layout-sider>Sider</a-layout-sider>
+					</a-layout>
+					<a-layout-footer>Footer</a-layout-footer>
+				</a-layout>
+
+				<h1>左导航栏带上中下布局</h1>
+				<a-layout>
+					<a-layout-sider>Sider</a-layout-sider>
+					<a-layout>
+						<a-layout-header>Header</a-layout-header>
+						<a-layout-content>Content</a-layout-content>
+						<a-layout-footer>Footer</a-layout-footer>
+					</a-layout>
+				</a-layout>
+
+			</div>
+		</div>
+
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/antd.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+
+			})
+		</script>
+	</body>
+</html>

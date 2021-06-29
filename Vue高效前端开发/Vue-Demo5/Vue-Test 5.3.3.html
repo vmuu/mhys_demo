@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>加减法整数计算器</title>
+		<link rel="stylesheet" type="text/css" href="css/antd.css" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#app{
+				width: 120px;
+				margin: 10px auto;
+			}
+			.msg{
+				width: 120px;
+				height: 30px;
+				border: solid 1px black;
+				margin: 10px 0px;
+				text-align: center;
+				padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="msg">{{result}}</div>
+			<p>
+				<a-button-group>
+					<a-button @click="getNum('1')">1</a-button>
+					<a-button @click="getNum('2')">2</a-button>
+					<a-button @click="getNum('3')">3</a-button>
+				</a-button-group>
+			</p>
+			<p>
+				<a-button-group>
+					<a-button @click="getNum('4')">4</a-button>
+					<a-button @click="getNum('5')">5</a-button>
+					<a-button @click="getNum('6')">6</a-button>
+				</a-button-group>
+			</p>
+			<p>
+				<a-button-group>
+					<a-button @click="getNum('7')">7</a-button>
+					<a-button @click="getNum('8')">8</a-button>
+					<a-button @click="getNum('9')">9</a-button>
+				</a-button-group>
+			</p>
+			<p>
+				<a-button-group>
+					<a-button @click="getNum('7')">0</a-button>
+					<a-button @click="doAdd()">+</a-button>
+					<a-button @click="doSub()">-</a-button>
+				</a-button-group>
+			</p>
+			<p>
+				<a-button type="primary" @click="doEquel()">=</a-button>
+			</p>
+			<p>
+				<a-button type="primary" @click="doEmpty()">重置</a-button>
+			</p>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/antd.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					temp: 0, //保存临时运算结果
+					operator: "", //保存最后的运算结果
+					result: ""
+				},
+				methods: {
+					getNum: function(num) {
+						this.result += num;
+					},
+					doAdd: function(num) {
+						//加法运算
+						this.temp += parseInt(this.result);
+						this.result = "";
+						this.operator = "+";
+					},
+					doSub: function() {
+						//减法运算
+						this.temp -= parseInt(this.result);
+						this.result = "";
+						this.operator = "-";
+					},
+					doEquel: function() {
+						//进行加减运算
+						if (this.operator == "+") {
+							this.result = this.temp + parseInt(this.result)
+						} else if (this.operator == "-") {
+							this.result = this.temp - parseInt(this.result)
+						} else {
+							this.$message.error("运算错误！")
+						}
+					},
+					doEmpty: function() {
+						this.temp = 0;
+						this.operator = "";
+						this.result = "";
+					}
+				},
+			});
+		</script>
+	</body>
+</html>

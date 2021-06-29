@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Document</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.banner {
+				background-color: rgb(46, 110, 139);
+				color: rgb(255, 255, 255);
+				width: 600px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				padding: 20px;
+				margin: 0 auto;
+			}
+
+			span {
+				font-size: 0.6em;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div id="app">
+			<banner-component message="小夏玩一下" v-bind:is-style="isShowStyle"></banner-component>
+		</div>
+		<!-- 	子组件 -->
+		<template id="childComp">
+			<span>
+				{{subMessage}}
+			</span>
+		</template>
+		<!-- 父组件 -->
+		<template id="parentComp">
+			<div>
+				<h1 :class="{banner:isStyle}">
+					{{message}}
+					<child-component sub-message="不玩就OUT了"></child-component>
+				</h1>
+			</div>
+		</template>
+
+		<script src="js/vue.min.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					isShowStyle: true
+				},
+				components: {
+					"banner-component": { //创建并注册父组件
+						props: ["message", "isStyle"],
+						template: "#parentComp",
+						components: {
+							"child-component": {
+								props: {
+									subMessage: String
+								},
+								template: "#childComp"
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

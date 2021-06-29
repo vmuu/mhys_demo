@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>CMS后台管理 -- 登录</title>
+		<link rel="stylesheet" type="text/css" href="css/antd.css" />
+	</head>
+	<body>
+		<div id="app" style="margin:20px auto;width:600px">
+			<fieldset style="width: 300px;">
+				<legend>CMS用户登录</legend>
+				<p>
+					<a-input placeholder="请输入登录名称..." v-model="user.loginId" />
+				</p>
+				<p>
+					<a-input type="password" placeholder="请输入登录密码..." v-model="user.loginPwd" />
+				</p>
+				<a-button type="primary" @click="doLogin">登录</a-button>
+			</fieldset>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/antd.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					user: {
+						loginId: "",
+						loginPwd: ""
+					}
+				},
+				methods: {
+					doLogin: function() {
+						this.$message.info(this.user.loginId + "登录成功");
+					}
+				},
+			})
+		</script>
+	</body>
+</html>

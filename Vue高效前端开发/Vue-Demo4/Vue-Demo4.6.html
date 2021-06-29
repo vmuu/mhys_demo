@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h3>新奇水果</h3>
+			<fruit-list-comp></fruit-list-comp>
+		</div>
+		<template id="fruitTemplate">
+			<div>
+				<ul>
+					<li v-for="fruit in fruitList">{{fruit}}</li>
+				</ul>
+			</div>
+		</template>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				components: {
+					"fruit-list-comp":{
+						data:function(){
+							return {
+								fruitList: ["龙珠果", "刺角瓜", "莲雾", "佛手柑", "费约果"]
+							}
+						},
+						template:"#fruitTemplate"
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

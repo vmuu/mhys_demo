@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<parent-component></parent-component>
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 创建子组件
+			var child = Vue.extend({
+				template: "<p>This is a child component!</p>"
+			});
+			// 创建父组件
+			var parent = Vue.extend({
+				// 在父组件内使用<child-component>标签
+				template: "<p>This is a parent component!<child-component></child-component></p>",
+				components: {
+					"child-component": child // 注册子组件
+				}
+			});
+			// 注册父组件
+			Vue.component("parent-component", parent)
+			var vm = new Vue({
+				el: "#app"
+			});
+		</script>
+	</body>
+</html>

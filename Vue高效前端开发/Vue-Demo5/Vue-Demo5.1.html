@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Hello AntD</title>
+		<link rel="stylesheet" type="text/css" href="css/antd.css" />
+	</head>
+	<body>
+		<div id="app" style="margin:20px auto;width:600px">
+			<p style="width:200px">
+				<a-input placeholder="请输入姓名..." v-model="userName" />
+			</p>
+			<a-button type="primary" @click="doSubmit">提交</a-button>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/antd.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					userName: ""
+				},
+				methods: {
+					doSubmit: function() {
+						this.$message.info("欢迎您！" + this.userName);
+					}
+				},
+			})
+		</script>
+	</body>
+</html>

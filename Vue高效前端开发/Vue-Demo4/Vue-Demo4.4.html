@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<my-comp></my-comp>
+		</div>
+
+		<script type="text/x-template" id="myComp">
+			<div><h1>使用Vue组件！</h1></div>
+		</script>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('my-compt', {
+				template: '#myComp'
+			});
+			var vm = new Vue({
+				el: "#app",
+				components: {
+					'my-comp': {
+						template: '#myComp'
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
