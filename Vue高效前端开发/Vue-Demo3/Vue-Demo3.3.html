@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计算属性</title>
+	</head>
+	<body>
+		<div id="app" style="margin: 20px auto; width: 600px;">
+			<p>原字符串：{{message}}</p>
+			<p>字符串转换后：{{reversedMessage}}</p>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					message: "Failure is the mother of success"
+				},
+				computed: {
+					reversedMessage: function() {
+						return this.message.split(" ").reverse().join(" ");
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

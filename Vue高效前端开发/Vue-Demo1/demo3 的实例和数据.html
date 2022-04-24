@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{title}}</h1>
+			{{user.name}}
+		</div>
+		<script type="text/javascript">
+			// 创建一个vue实例
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					title: '这是一个标题',
+					user: {
+						name: '杨明金',
+						age: 0
+					}
+				},
+				// 创建一个方法
+				methods: {
+					doSave: function() {
+						// 在Vue实例内部访问data中的数据时一般使用“this.数据”的方式
+						console.log("methods输出----姓名：", this.user.name)
+					}
+				},
+				created: function() {
+					this.title = '生命钩子函数'
+					console.log('created()函数被调用')
+				}
+			})
+			// 如果在Vue实例外部访问data中的数据时，使用Vue实例对象来访问
+			console.log(vm.user.name)
+		</script>
+	</body>
+</html>

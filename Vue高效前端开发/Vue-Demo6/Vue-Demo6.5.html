@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/antd.css" />
+		<style type="text/css">
+			#app {
+				width: 500px;
+				margin: 0 auto;
+				padding: 15px;
+				border: 1px solid #888;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>行星知识测试</h2>
+			<h4>太阳系中最大的行星是？</h4>
+			<a-radio-group v-model="result1">
+				<a-radio-button value="a">金星</a-radio-button>
+				<a-radio-button value="b">木星</a-radio-button>
+				<a-radio-button value="c">水星</a-radio-button>
+				<a-radio-button value="d">火星</a-radio-button>
+				<a-radio-button value="e">土星</a-radio-button>
+			</a-radio-group>
+			<h4>太阳系中离太阳最近的行星是？</h4>
+			<a-radio-group v-model="result2">
+				<a-radio value="a">金星</a-radio>
+				<a-radio value="b">木星</a-radio>
+				<a-radio value="c">水星</a-radio>
+				<a-radio value="d">火星</a-radio>
+				<a-radio value="e">土星</a-radio>
+			</a-radio-group>
+			<h4>太阳系中离地球最近的行星是？</h4>
+			<a-radio-group v-model="result3" :options="items"> </a-radio-group>
+			<br />
+			<a-button type="primary" @click="doSubmit">提交</a-button>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/antd.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					items: [{
+						label: "金星",
+						value: "a"
+					}, {
+						label: "木星",
+						value: "b"
+					},{
+						label: "水星",
+						value: "c"
+					},{
+						label: "火星",
+						value: "d"
+					},{
+						label: "土星",
+						value: "e"
+					}],
+					result1: "",
+					result2: "",
+					result3: "",
+				},
+				methods: {
+					doSubmit: function() {
+						var score = 10;
+						if (this.result1 == "b") {
+							score += 30;
+						}
+						if (this.result2 == "c") {
+							score += 30;
+						}
+						if (this.result3 == "a") {
+							score += 30;
+						}
+						this.$message.info("您的得分：" + score);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

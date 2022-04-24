@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			{{text | textFilter}}
+		</div>
+		<script type="text/javascript">
+			// 创建vue实例
+			var vm = new Vue({
+				// el绑定实例
+				el: '#app',
+				// 加载数据
+				data: {
+					text: 'this vue student'
+				},
+				// 方法
+				methods: {
+
+				},
+				// 过滤器
+				filters: {
+					textFilter: function(val) {
+						// split()为JavaScript中String对象中的方法，可以把字符串分割为字符数组
+						var str = val.split(' ')
+						var resule = ''
+						// charAt(0)为JavaScript的String对象的方法，取字符串的第一个值
+						// toUpperCase()为JavaScript中String对象中的方法，可以把字母转为大写
+						// Substring()为JavaScript中String对象中的方法，可以把方法用于提取字符串中介于两个指定下标之间的字符
+						// substring() 方法返回的子串包括 开始 处的字符，但不包括 结束 处的字符。
+						for (var i = 0; i < str.length; i++) {
+							resule += str[i].charAt(0).toUpperCase()+str[i].substring(1)+' ';
+						}
+						return resule;
+					}
+				},
+				// 实例创建完以后调用
+				created: function() {
+
+				},
+				// el挂载到示例上后调用
+				mounted: function() {
+
+				},
+				// 实例销毁之前使用
+				beforeDestroy: function() {
+
+				}
+			})
+		</script>
+	</body>
+</html>

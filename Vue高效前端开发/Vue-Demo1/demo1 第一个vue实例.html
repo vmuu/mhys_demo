@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<!-- 定义一个vive -->
+		<div id="app" style="text-align: center;">
+			{{ message }}
+		</div>
+	</body>
+	<script type="text/javascript">
+		// 定义moldel
+		var exmpleData = {
+			message: "hello word"
+		}
+		// 创建一个Vue实例或ViewModel，它连接View与 Model
+		var vm = new Vue({
+			el: '#app',
+			data: exmpleData
+		})
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>字符串查找</title>
+	</head>
+	<body>
+		<div id="app" style="margin: 20px auto; width: 600px;">
+			<span>字符串关键字：</span>
+			<input type="text" placeholder="请输入关键字" v-model="wordKey" />
+			<ul>
+				<li v-for="item in finditems" :key="item">{{item}}</li>
+			</ul>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					items: [
+						"Goods determine what you're goind to be",
+						"God helps those who help themselves",
+						"Wasting time is robbing oneself.",
+						"Nothing is impossible to a willing heart"
+					],
+					wordKey: ""
+				},
+				computed: {
+					finditems: function() {
+						var _this = this;
+						return _this.items.filter(function(val) {
+							return val.valueOf(_this.wordKey) != -1;
+						})
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

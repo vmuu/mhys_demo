@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/antd.css" />
+		<style type="text/css">
+			#app{
+				width: 300px;
+				margin: 0 auto;
+				padding: 15px;
+				border: 1px solid #888;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<fieldset>
+				<legend>订单录入</legend>
+				<p>
+					<a-input placeholder="请输入收货人姓名..." v-model="order.name">
+						<a-icon slot="prefix" type="user" />
+					</a-input>
+				</p>
+				<p>
+					<a-input placeholder="请输入支付密码..." type="password" v-model="order.password">
+						<a-icon slot="prefix" type="unlock" />
+					</a-input>
+				</p>
+				<p>
+					<a-input placeholder="请输入订单总金额..." defaultValue="0.00" v-model="order.price"><span
+							slot="addonBefore">￥</span><span slot="addonAfter">元</span></a-input>
+				</p>
+				<p>
+					<a-input placeholder="请输入收货地址..." type="textarea" v-model="order.address"></a-input>
+				</p>
+				<p>
+					<a-button type="primary" @click="doSave">保存</a-button>
+				</p>
+			</fieldset>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/antd.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					order: {
+						name: "",
+						password: "",
+						price: "0.00",
+						adress: ""
+					}
+				},
+				methods: {
+					doSave: function() {
+						this.$message.info("订单保存成功！");
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

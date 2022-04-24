@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#app{
+				text-align: center;
+				margin-top: 10%;
+				font-weight: 600;
+				font-size: 8em;
+				color: white;
+				background-color: #033592;
+				padding: 5%;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 定义一个vive -->
+		<div id="app">
+			{{adTitle}}
+		</div>
+		<script type="text/javascript">
+			// 创建vue示例
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					index: '',
+					ads: [],
+					adTitle: ''
+				},
+				// 实例建立完成后调用
+				created: function() {
+					this.ads = [
+						"云南交通委提醒您：",
+						"道路千万条",
+						"安全第一条",
+						"行车不规范",
+						"亲人两行泪"
+					],
+					this.adTitle=this.ads[0]
+				},
+				// el挂载到实例上后调用
+				mounted: function() {
+					var _this = this;
+					this.timer = setInterval(function() {
+						if (_this.index < _this.ads.length - 1) {
+							_this.index++;
+						} else {
+							_this.index = 0;
+						}
+						_this.adTitle = _this.ads[_this.index]
+					}, 1500);
+				},
+				// 实例销毁之前调用
+				beforeDestroy: function() {
+					if(this.timer){
+						clearInterval(timer)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

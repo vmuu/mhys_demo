@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>人力资源管理系统</title>
+	</head>
+	<body>
+		<div id="app" style="margin: 20px auto; width: 600px;">
+			<ul>
+				<li v-for="(item,name,index) in emp" :key="index">
+					<a href="">{{index}}.{{name}}:{{item}}</a>
+				</li>
+			</ul>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					emp: {
+						user: "赵五",
+						age: 20,
+						job: "项目经理"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/antd.css" />
+		<style type="text/css">
+			#app {
+				width: 300px;
+				margin: 0 auto;
+				padding: 15px;
+				border: 1px solid #888;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h3>省市联动</h3>
+			<a-select v-model="selectProvince" style="width: 120px" @change="doChange">
+				<a-select-option v-for="province in provinceData" :key="province">{{province}}
+				</a-select-option>
+			</a-select>
+			<a-select v-model="selectCity" style="width: 120px">
+				<a-select-option v-for="city in cities" :key="city">{{city}}</a-select-option>
+			</a-select>
+
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/antd.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					provinceData: ["湖北", "湖南"],
+					cityData: {
+						"湖北": ["武汉", "襄阳", "宜昌"],
+						"湖南": ["长沙", "岳阳", "永州"],
+					},
+					cities: ["武汉", "襄阳", "宜昌"],
+					selectCity: "武汉",
+					selectProvince:"湖北"
+				},
+				methods: {
+					doChange: function(value) {
+						this.cities = this.cityData[value];
+						this.selectCity = this.cityData[value][0];
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

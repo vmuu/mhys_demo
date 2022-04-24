@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="" name="" id="" value="" v-model="index" />
+			<h1>{{adTitle}}</h1>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					ads: [],
+					index: 0,
+					adTitle: ""
+				},
+				created: function() {
+					this.ads = [
+						"云南交通委提醒您",
+						"道路千万条",
+						"安全第一条",
+						"行车不规范",
+						"亲人两行泪"
+					]
+					this.adTitle = this.ads[0]
+				},
+				mounted: function() {
+					var _this = this;
+					this.timer = setInterval(function() {
+						if (_this.index < _this.ads.length - 1) {
+							_this.index++;
+						} else {
+							_this.index = 0;
+						}
+						_this.adTitle = _this.ads[_this.index]
+					}, 1000);
+				},
+				beforeDestroy: function() {
+					if (this.timer) {
+						clearInterval(timer)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

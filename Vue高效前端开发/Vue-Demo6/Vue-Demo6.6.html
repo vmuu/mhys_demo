@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/antd.css" />
+		<style type="text/css">
+			#app {
+				width: 300px;
+				margin: 0 auto;
+				padding: 15px;
+				border: 1px solid #888;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<a-form :form="form" @submit="doSubmit">
+				<a-form-item label="邮件地址">
+					<a-input v-decorator="[
+						'email',{
+							rules:[{
+								type:'email',message:'邮件地址格式不正确！',
+							},{
+								required:true,message:'邮件地址不能为空！'
+							}]
+						}
+					]" />
+
+				</a-form-item>
+				<a-form-item label="登录密码">
+					<a-input v-decorator="[
+				 		'password',{
+				 			rules:[{
+				 				required:true,message:'登录密码不能为空！'
+				 			}]
+				 		}
+				 	]" type="password" />
+				</a-form-item>
+
+				<a-form-item label="确认密码">
+					<a-input v-decorator="[
+				 		'confirm',{
+				 			rules:[{
+				 				required:true,message:'确认密码不能为空！'
+				 			},{
+								validator:compareToFirstPassword,
+							}]
+				 		}
+				 	]" type="password" />
+				</a-form-item>
+
+				<a-form-item label="昵称">
+					<a-input v-decorator="[
+								'nickname',{
+									rules:[{
+										required:true,message:'昵称不能为空！',whitespance:true
+									}]
+								}
+							]" />
+				</a-form-item>
+
+				<a-form-item>
+					<a-checkbox v-decorator="['agreement', {valuePropName: 'checked' }]">
+						我已同意 <a href="">《系统使用授权协议》</a>
+					</a-checkbox>
+				</a-form-item>
+				<a-form-item>
+					<a-button type="primary" html-type="submit">注册</a-button>
+				</a-form-item>
+			</a-form>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/antd.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				beforeCreate() {
+					this.form = this.$form.createForm(this);
+				},
+				methods: {
+					doSubmit(e) {
+						var _this = this;
+						e.preventDefault(); //取消事假的默认动作
+						this.form.validateFieldsAndScroll(function(err, values) {
+							if (!err) {
+								_this.$message.info("用户注册成功")
+								console.log("表单中值", "values")
+							}
+						});
+					},
+					compareToFirstPassword(rule, value, callback) {
+						var form = this.form;
+						if (value && value !== form.getFieldValue("password")) {
+							callback("密码输入不一致！")
+						} else {
+							callback();
+						}
+					}
+				},
+			});
+		</script>
+	</body>
+</html>

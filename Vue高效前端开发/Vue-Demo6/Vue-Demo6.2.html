@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/antd.css" />
+		<style type="text/css">
+			#app {
+				text-align: center;
+				line-height: 50px;
+				color: black;
+			}
+
+			.acol1 {
+				background-color: #7dbcea;
+			}
+
+			.gutter-box,.acol2{
+				background-color: #108ee9;
+			}
+
+			.arow {
+				margin-bottom: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<p>列间隔</p>
+			<div>
+				<a-row :gutter="16">
+					<a-col class="gutter-row" :span="6">
+						<div class="gutter-box">col-6</div>
+					</a-col>
+					<a-col class="gutter-row" :span="6">
+						<div class="gutter-box">col-6</div>
+					</a-col>
+					<a-col class="gutter-row" :span="6">
+						<div class="gutter-box">col-6</div>
+					</a-col>
+					<a-col class="gutter-row" :span="6">
+						<div class="gutter-box">col-6</div>
+					</a-col>
+				</a-row>
+			</div>
+			<p>列偏移</p>
+			<div>
+				<a-row class="arow">
+					<a-col class="acol1"  :span="8">col-8</a-col>
+					<a-col class="acol2" :span="8" :offset="8">col-8</a-col>
+				</a-row>
+				<a-row class="arow">
+					<a-col class="acol1" :span="6" :offset="6">col-6 col-offset-6</a-col>
+					<a-col class="acol2" :span="6" :offset="6">col-6 col-offset-6</a-col>
+				</a-row>
+				<a-row class="arow">
+					<a-col class="acol1" :span="12" :offset="6">col-12 col-offset-6</a-col>
+				</a-row>
+			</div>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/antd.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app"
+			})
+		</script>
+	</body>
+</html>

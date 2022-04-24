@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#app{
+				text-align: center; 
+				margin-top: 15%;
+			}
+			#app div{
+				padding: 20px;
+			}
+			.form-name{
+				margin: 0 auto;
+				width: 30%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<fieldset class="form-name">
+				<legend>welcome to you</legend>
+				<form action="">
+					<div>姓：<input type="text" v-model="surname"></div>
+					<div>名：<input type="text" v-model="name"></div>
+				</form>
+			</fieldset>
+			<p>欢迎您！{{surname+name}}</p>
+		</div>
+		<script type="text/javascript">
+			var ve = new Vue({
+				el: '#app',
+				data: {
+					surname: '老',
+					name: '王'
+				}
+			})
+		</script>
+	</body>
+</html>

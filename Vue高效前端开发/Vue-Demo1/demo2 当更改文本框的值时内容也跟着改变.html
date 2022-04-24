@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app" style="text-align: center;margin-top: 50%;">
+			<!-- 进行双向绑定 -->
+			<input type="text" v-model="name" style="text-align: center;padding: 10px;">
+			<p>{{ name }}</p>
+		</div>
+		<script type="text/javascript">
+			// 创建vue实例
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					name: '双向绑定实例'
+				}
+			})
+		</script>
+	</body>
+</html>
