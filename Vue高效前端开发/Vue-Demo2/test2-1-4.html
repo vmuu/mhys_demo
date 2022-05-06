@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<style type="text/css">
+			#app {
+				width: 300px;
+				margin: 0 auto;
+			}
+			#app>fieldset>legend{
+				text-align: center;
+			}
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<fieldset>
+				<!-- disabled设置以后表格不可编辑 -->
+				<legend>个人工资计算器</legend>
+				<p>基本工资：<input type="number" name="" id="" v-model="base"></p>
+				<p>岗位工资：<input type="number" name="" id="" v-model="jobs"></p>
+				<p>月度奖金：<input type="number" name="" id="" v-model="bonus"></p>
+				<p>综合补贴：<input type="number" name="" id="" v-model="subsidies"></p>
+				<p>扣除金额：<input type="number" name="" id="" v-model="deductions"></p>
+				<p>应发工资：<b v-text="parseFloat(base)+parseFloat(jobs)+parseFloat(bonus)+parseFloat(subsidies)+parseFloat(deductions)"></b></p>
+			</fieldset>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					base: null, //基本工资
+					jobs: null, //岗位工资
+					bonus: null, //月度奖金
+					subsidies: null, //综合补贴
+					deductions: null, //扣除金额
+					sum: null //金额总和
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#app {
+				text-align: center;
+				margin-top: 10%;
+				font-weight: 600;
+				font-size: 1.5em;
+				color: white;
+				background-color: #033592;
+				padding: 5%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h1>当前日期：{{ date | formatDate }}</h1>
+		</div>
+		<script type="text/javascript">
+			var pddDate = function(val) {
+				return val < 10 ? "0" + val : val;
+			};
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					date: null
+				},
+				created: function() {
+					this.date = new Date();
+				},
+				mounted: function() {
+					var _this = this;
+					this.timer = setInterval(function() {
+						_this.date = new Date();
+					}, 1000);
+				},
+				beforeDestroy: function() {
+					if (this.timer) {
+						clearInterval(this.timer);
+					}
+				},
+				filters: {
+					formatDate: function(val) {
+						var currdate = new Date(val);
+						var year = currdate.getFullYear();
+						var month = pddDate(currdate.getMonth() + 1);
+						var day = pddDate(currdate.getDate());
+						var houts = pddDate(currdate.getHours());
+						var minutes = pddDate(currdate.getMinutes());
+						var seconds = pddDate(currdate.getSeconds());
+						return year + "-" + month + "-" + day + "   " + houts + "-" + minutes + "-" + seconds;
+					}
+				}
+			});
+		</script>
+
+	</body>
+</html>
