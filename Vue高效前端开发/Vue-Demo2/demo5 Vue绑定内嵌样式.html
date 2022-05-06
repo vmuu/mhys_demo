@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h3>绑定Style 对象语法</h3>
+			<img src="images/painting.jpg" alt="风景画" v-bind:style="styleObject" />
+		</div>
+
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					styleObject: {
+						width: "450px",
+						height: "400px",
+						"box-shadow": "0 5px 15px 5px #888888",
+						borderRadius: "50px"
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{number+1}}</p>
+			<p>{{ok? 'yes':'no'}}</p>
+			<p>{{message.split("").reverse().join("")}}</p>
+			<p>{{"list-"+id}}</p>
+			<p v-text='"list-"+id'></p>
+			<!-- Vue只支持单个表达式，不支持语句和流控制。另外，在表达式中，不能使用用户自定义的全局变量，只能使用JavaScript的全局变量，例如Math和Date。以下是无效的表达式代码： -->
+			
+			<!-- {{ var book ="JavaScript权威指南" }} --><!--这是语句，不是表达式-->
+			
+			<!-- {{ if(ok) return msg }} --><!--不能使用流控制，要使用三元条件运算符-->
+
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					number: 1,
+					ok: true,
+					message: 'Hello World',
+					id: "01"
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			.box{
+				margin-top: 20px;
+				padding: 20px;
+				border: 1px solid red;
+				box-shadow：0 5px 15px 5px #888888;
+			}
+		</style>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h1>用户登录/注册</h1>
+			<input type="checkbox" v-model="isRegUser">是注册
+			<div class="box">
+				<div v-if="isRegUser">
+					<h3>用户注册</h3>
+					<p>登录账户：<input type="text"></p>
+					<p>登录密码：<input type="text"></p>
+					<p>确认账户：<input type="text"></p>
+				</div>
+				<div v-else>
+					<h3>用户登录</h3>
+					<p>登录账户：<input type="text"></p>
+					<p>登录密码：<input type="text"></p>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					isRegUser: true,
+					loginId: "",
+					loginPwd: "",
+					loginVPwd: ""
+				}
+			});
+		</script>
+	</body>
+</html>

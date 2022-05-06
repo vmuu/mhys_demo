@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 文本插值是最基本的形式，使用双大括号(Mustache语法) {{}} -->
+			<p>{{text}}</p>
+			<!-- 文本插值还可以使用v-text指令来代替双大括号标签 -->
+			<p v-text='text'></p>
+			<!-- 有时候只需渲染一次数据，后续数据变化不再关心，可以通过v-once指令来实现 -->
+			<p v-once='text'>{{text}}</p>
+			<!-- html插值 -->
+			<p v-html='text'></p>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					text:'<h1>欢迎您，管理员</h1>'
+				}
+			})
+		</script>
+	</body>
+</html>

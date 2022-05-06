@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			#app div {
+				margin: 0 auto;
+				text-align: center;
+				width: 300px;
+				height: 300px;
+			}
+
+			/*边框*/
+			#app .border {
+				border: 5px solid red;
+			}
+
+			/*阴影*/
+			#app .shadow {
+				box-shadow: 10px 10px 5px #888888;
+			}
+
+			/*背景颜色*/
+			#app .backcolor {
+				background-color: chocolate;
+			}
+
+			/*鼠标悬停*/
+			#app .hover {
+				/* background-color: darkmagenta; */
+			}
+
+			/*鼠标悬停*/
+			#app .hover:hover {
+				background-color: blue;
+			}
+		</style>
+		<!-- 引入vue -->
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p>
+				<input type="checkbox" v-model="isBorder">边框
+				<input type="checkbox" v-model="isShadow">阴影
+				<input type="checkbox" v-model="isBackColor">背景
+				<input type="checkbox" v-model="isHover">悬停动画
+			</p>
+
+			<div v-bind:class="{border:isBorder, shadow:isShadow,backcolor:isBackColor,hover:isHover}"></div>
+			<div v-bind:class="[borderClass,shadowClass,backColorClass]"></div>
+		</div>
+
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					isBorder: true,
+					isShadow: true,
+					isBackColor: true,
+					isHover: true,
+					borderClass: "border",
+					shadowClass: "shadow",
+					backColorClass: "backcolor"
+				}
+			})
+		</script>
+	</body>
+</html>
